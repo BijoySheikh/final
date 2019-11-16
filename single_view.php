@@ -18,9 +18,9 @@ if (isset($name)) {
 
    ?>
 
-<!-- ==================================================== -->
 
 <!-- ==================================================== -->
+
 <?php
 include('action/sql_config.php');
 $id = $_GET['id'];
@@ -177,7 +177,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                     $loan_amount = $row["loan_amount"];
                     $profit_amount = $row["profit_amount"];
 
-                   $sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where test=$identy";
+                   $sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where current_id=$identy";
                     
               
                       $result = mysqli_query($conn, $sql);
@@ -255,7 +255,7 @@ mysqli_free_result($result);
               <h5>মোট আদায় : 
 
               <?php
-              $sql = "SELECT sum(joma) AS `total` FROM `member_premier_data` where test=$identy ";
+              $sql = "SELECT sum(joma) AS `total` FROM `member_premier_data` where current_id=$identy and name='$name'";
               
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_array($result);
@@ -275,7 +275,7 @@ mysqli_free_result($result);
               <h5>সঞ্চয় আদায় : 
 
               <?php
-              $sql = "SELECT sum(savings) AS `savings` FROM `member_premier_data` where test=$identy ";
+              $sql = "SELECT sum(savings) AS `savings` FROM `member_premier_data` where current_id=$identy and name='$name'";
               
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_array($result);
@@ -322,6 +322,9 @@ mysqli_free_result($result);
                         
                       </div>
                       <div class="form-group">
+                        <input type="hidden" class="form-control" name="name" value="<?php echo $name; ?>" id="recipient-name">
+                      </div>
+                      <div class="form-group">
                         <label for="recipient-name" class="col-form-label">জমা
                         </label>
                         <input type="number" class="form-control" name="joma" id="recipient-name">
@@ -332,7 +335,7 @@ mysqli_free_result($result);
                         <input type="number" class="form-control" name="savings" id="recipient-name">
                       </div>
                       <div class="form-group">
-                        <input type="hidden" name="test" value="<?php echo $identy; ?>" class="form-control" id="recipient-name">
+                        <input type="hidden" name="current_id" value="<?php echo $identy; ?>" class="form-control" id="recipient-name">
                       </div>
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Message:
@@ -352,7 +355,7 @@ mysqli_free_result($result);
               </div>
             </div>
             <?php
-$sql = "SELECT * FROM member_premier_data  where test=$identy";
+$sql = "SELECT * FROM member_premier_data  where current_id='$identy' and name='$name'";
 $res = $conn->query($sql);
 if ($res->num_rows > 0) {
 ?>  <table class="table table-dark table-striped">
@@ -379,11 +382,9 @@ echo "<tr><td> " . $row["premier_date"] . " </td>
 <td> " . $name . "</td>
 <td> " . $row["joma"] . "</td>
 <td> " . $row["savings"] . "</td>
-<td> " . $row["savings"] . "</td>
-<td> " . $row["value"] . "</td>
-<td> " . $row["value"] . "</td>
+<td> " . $row["messege"] . "</td>
 <td class='text-right'><a class='btn btn-danger btn-sm' id='alert' href='single_view.php?id=" . $identy . "'><i class='fas fa-trash-alt'></i></i></a>
-<a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='premier_data_delete.php?id=" . $row["id"] . "&mId=". $row["test"] ."'><i class='fas fa-times'></i></a></td></tr>";
+<a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='premier_data_delete.php?id=" . $row["id"] . "&mId=". $row["current_id"] ."'><i class='fas fa-times'></i></a></td></tr>";
 }
 } else {
 echo "<h5 class='text-info text-center'>কিস্তি নিবন্ধনকৃত নেই</h5>";

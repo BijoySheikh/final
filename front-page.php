@@ -1,8 +1,28 @@
 <?php
 include('action/sql_config.php');
 
+session_start();
 
-?>
+
+
+
+if (isset($_SESSION["name"])) {
+    $name = $_SESSION["name"];
+    $password = $_SESSION["password"];
+    
+}else {
+    echo "not working";
+       
+    header('location: index.php');
+}
+
+// Start the session
+
+if (isset($name)) {
+
+   ?>
+
+<!-- ==================================================== -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -365,7 +385,7 @@ include('action/sql_config.php');
 
 
 
-$sql = "SELECT * FROM `users` where name='kamal' LIMIT 1";
+$sql = "SELECT * FROM `users` where name='$name' and password='$password' LIMIT 1";
 $result = $conn->query($sql);
 if ($result) {
 // output data of each row
@@ -374,19 +394,35 @@ while ($row = $result->fetch_assoc()) {
 if($row['image']){
 
   $image =  'images/users/' . $row['image'];
-  $blank =  'images/app_image/blank.jpg';
+  
+
+
   ?>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
-                <img class="img-profile rounded-circle" src="<?php if($image){echo $image;}else{echo $blank;} ?>">
+                <img class="img-profile rounded-circle" src="<?php if($row['image']){echo $image;} ?>">
               </a>
 
 
               
 <?php
+
+}else
+{
+
+  ?>
+  
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
+                <img class="img-profile rounded-circle" src="images/users/blank.jpg">
+              </a>
+
+  <?php
 
 }
 
@@ -395,6 +431,7 @@ if($row['image']){
 
 
 ?>
+
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -421,6 +458,9 @@ if($row['image']){
 
         </nav>
         <!-- End of Topbar -->
+
+
+
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -992,3 +1032,16 @@ if($row['image']){
 </body>
 
 </html>
+
+
+
+
+
+<!-- ==================================================== -->
+
+<?php
+
+
+}
+
+?>

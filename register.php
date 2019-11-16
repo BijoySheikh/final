@@ -65,7 +65,7 @@ if (isset($name)) {
               <form class="user" action="register_insert.php" enctype="multipart/form-data" method="post">
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
-                    <input type="text" name="f_name" class="form-control form-control-user" id="exampleFirstName" placeholder="নাম" required>
+                    <input type="text" name="name" class="form-control form-control-user" id="exampleFirstName" placeholder="নাম" required>
                   </div>
                   
                 </div>

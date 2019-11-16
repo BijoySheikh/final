@@ -1,9 +1,6 @@
-
 <?php
 session_start();
 include('action/sql_config.php');
-
-
 
 
 if (isset($_SESSION["name"])) {
@@ -20,9 +17,13 @@ if (isset($_SESSION["name"])) {
 
 if (isset($name)) {
 
+   ?>
+
+<!-- --------------------------------------------------------------------------------------------- -->
+
  
 
-
+<?php 
 
    
 $id = $_GET['id'];
@@ -443,12 +444,58 @@ while ($row = $result->fetch_assoc()) {
               
               </div>
               <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna
-                  </span>
-                  <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                </a>
+             
+              <?php
+
+
+
+
+$sql = "SELECT * FROM `users` where name='$name' and password='$password' LIMIT 1";
+$result = $conn->query($sql);
+if ($result) {
+// output data of each row
+while ($row = $result->fetch_assoc()) {
+
+if($row['image'] == 1){
+
+  $image =  'images/users/' . $row['image'];
+  
+
+
+  ?>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
+                <img class="img-profile rounded-circle" src="<?php if($row['image']){echo $image;} else{echo $blank; } ?>">
+              </a>
+
+
+              
+<?php
+
+}else
+{
+
+  ?>
+  
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
+                <img class="img-profile rounded-circle" src="images/users/blank.jpg">
+              </a>
+
+  <?php
+
+}
+
+}
+}
+
+
+?>
                 
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
