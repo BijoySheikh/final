@@ -129,13 +129,13 @@ if (isset($name)) {
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">মূল হিসাব:
               </h6>
-              <a class="collapse-item" href="buttons.html">সাপ্তাহিক হিসাব
+              <a class="collapse-item" href="weekly.php">সাপ্তাহিক হিসাব
               </a>
-              <a class="collapse-item" href="cards.html">মাসিক হিসাব
+              <a class="collapse-item" href="monthly.php">মাসিক হিসাব
               </a>
-              <a class="collapse-item" href="buttons.html">অন্যান্য হিসাব
+              <a class="collapse-item" href="others.php">অন্যান্য হিসাব
               </a>
-              <a class="collapse-item" href="cards.html">খরচ হিসাব
+              <a class="collapse-item" href="cost.php">খরচ হিসাব
               </a>
             </div>
             
@@ -159,7 +159,7 @@ if (isset($name)) {
               </a>
               <a class="collapse-item" href="paid_member.php">পরিশোধকৃত সদস্য
               </a>
-              <a class="collapse-item text-danger" href="utilities-animation.php"> সদস্য বাতিল করুন 
+              <a class="collapse-item text-danger" href="running_member.php"> সদস্য বাতিল করুন 
               </a>
             </div>
           </div>
@@ -199,12 +199,12 @@ if (isset($name)) {
             </div>
           </div>
         </li>
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+         <!-- Nav Item - Comity -->
+         <li class="nav-item">
+          <a class="nav-link" href="comity.php">
             <i class="fas fa-fw fa-chart-area">
             </i>
-            <span>Charts
+            <span>কমিটি
             </span>
           </a>
         </li>
@@ -413,7 +413,7 @@ if ($result) {
 // output data of each row
 while ($row = $result->fetch_assoc()) {
 
-if($row['image'] == 1){
+if($row['image']){
 
   $image =  'images/users/' . $row['image'];
   
@@ -551,7 +551,7 @@ if ($res->num_rows > 0) {
                                 <td width='15%'> " . $row["loan_amount"] . "</td>
                                 <td width='15%'> " . $row["total_amount"] . "</td>          
                                 <td class='text-center'><a class='btn btn-info btn-sm' id='alert' href='single_view.php?id=" . $row["id"] . "'>দেখুন</a>
-                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='delete.php?id=" . $row["id"] .  "&image=". $image ."'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
+                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='action/delete.php?id=" . $row["id"] .  "&image=". $image ."'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
         
     }
 

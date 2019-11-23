@@ -15,7 +15,7 @@ if (isset($_SESSION["name"])) {
 
 // Start the session
 
-if (isset($uname)) {
+if (isset($name)) {
 
    ?>
 
@@ -25,7 +25,8 @@ if (isset($uname)) {
 
    <?php
 }else {
-
+    
+    header('location: index.php');
 
 }
 

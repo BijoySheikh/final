@@ -120,13 +120,13 @@ if (isset($name)) {
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">মূল হিসাব:
               </h6>
-              <a class="collapse-item" href="buttons.html">সাপ্তাহিক হিসাব
+              <a class="collapse-item" href="weekly.php">সাপ্তাহিক হিসাব
               </a>
-              <a class="collapse-item" href="cards.html">মাসিক হিসাব
+              <a class="collapse-item" href="monthly.php">মাসিক হিসাব
               </a>
-              <a class="collapse-item" href="buttons.html">অন্যান্য হিসাব
+              <a class="collapse-item" href="others.php">অন্যান্য হিসাব
               </a>
-              <a class="collapse-item" href="cards.html">খরচ হিসাব
+              <a class="collapse-item" href="cost.php">খরচ হিসাব
               </a>
             </div>
             
@@ -150,7 +150,7 @@ if (isset($name)) {
               </a>
               <a class="collapse-item" href="paid_member.php">পরিশোধকৃত সদস্য
               </a>
-              <a class="collapse-item text-danger" href="utilities-animation.php"> সদস্য বাতিল করুন 
+              <a class="collapse-item text-danger" href="running_member.php"> সদস্য বাতিল করুন 
               </a>
             </div>
           </div>
@@ -176,17 +176,17 @@ if (isset($name)) {
               </h6>
               <a class="collapse-item" href="index.php">লগ ইন
               </a>
-              <a class="collapse-item" href="action/register.php">রেজিস্টার
+              <a class="collapse-item" href="register.php">রেজিস্টার
               </a>
-              <a class="collapse-item" href="forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
+              <a class="collapse-item" href="action/forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
               <div class="collapse-divider">
               </div>
               <h6 class="collapse-header">অন্যান্য:
               </h6>
-              <a class="collapse-item text-danger" href="all_delete.php">সব সদস্য মুছুন
+              <a class="collapse-item text-danger" href="action/all_delete.php">সব সদস্য মুছুন
               </a>
-              <a class="collapse-item text-danger" href="reset.php">রিসেট
+              <a class="collapse-item text-danger" href="action/reset.php">রিসেট
               </a>
             </div>
           </div>

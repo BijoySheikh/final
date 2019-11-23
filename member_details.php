@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include('action/sql_config.php');
@@ -12,36 +13,22 @@ if (isset($_SESSION["name"])) {
        
     header('location: index.php');
 }
-
 // Start the session
-
 if (isset($name)) {
-
-   ?>
-
-<!-- --------------------------------------------------------------------------------------------- -->
-
  
-
-<?php 
-
    
 $id = $_GET['id'];
-
 /* total joma */
-$sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where test=$id";
-        
 
+
+$sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where current_id=$id";
+        
       
 $result = mysqli_query($conn, $sql);
-
 $data = mysqli_fetch_array($result);
-
 if($data){
  $joma = $data['joma'];
-
 }
-
 $sql = "SELECT * FROM all_member_form_data WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -105,16 +92,14 @@ while ($row = $result->fetch_assoc()) {
     <!-- Page Wrapper -->
     <div id="wrapper">
     
-      <!-- Sidebar -->
-      <ul class="navbar-nav sidebar_bg sidebar sidebar-dark accordion" id="accordionSidebar">
-      
+ <!-- Sidebar -->
+ <ul class="navbar-nav sidebar_bg sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <div class="sidebar-brand-icon">
           <i class="fas fa-handshake"></i>
             </i>
           </div>
-          
           <div class="sidebar-brand-text mx-3">সমিতি লি:
             <sup>1
             </sup>
@@ -128,8 +113,8 @@ while ($row = $result->fetch_assoc()) {
               echo "<span class='font-weight-bold ml-3 text-warning mt-2'> " . $date . $week_day ."</span>";
 
         ?>
-         <!-- Nav Item - Dashboard -->
-         <li class="nav-item active">
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
           <a class="nav-link" href="front-page.php">
           <i class="fas fa-home"></i>
             </i>
@@ -155,13 +140,13 @@ while ($row = $result->fetch_assoc()) {
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">মূল হিসাব:
               </h6>
-              <a class="collapse-item" href="buttons.html">সাপ্তাহিক হিসাব
+              <a class="collapse-item" href="weekly.php">সাপ্তাহিক হিসাব
               </a>
-              <a class="collapse-item" href="cards.html">মাসিক হিসাব
+              <a class="collapse-item" href="monthly.php">মাসিক হিসাব
               </a>
-              <a class="collapse-item" href="buttons.html">অন্যান্য হিসাব
+              <a class="collapse-item" href="others.php">অন্যান্য হিসাব
               </a>
-              <a class="collapse-item" href="cards.html">খরচ হিসাব
+              <a class="collapse-item" href="cost.php">খরচ হিসাব
               </a>
             </div>
             
@@ -185,13 +170,14 @@ while ($row = $result->fetch_assoc()) {
               </a>
               <a class="collapse-item" href="paid_member.php">পরিশোধকৃত সদস্য
               </a>
-              <a class="collapse-item text-danger" href="utilities-animation.php"> সদস্য বাতিল করুন 
+              <a class="collapse-item text-danger" href="running_member.php"> সদস্য বাতিল করুন 
               </a>
             </div>
           </div>
         </li>
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider"
+        >
         <!-- Heading -->
         <div class="sidebar-heading">
         সাইট সেটিং
@@ -210,7 +196,7 @@ while ($row = $result->fetch_assoc()) {
               </h6>
               <a class="collapse-item" href="index.php">লগ ইন
               </a>
-              <a class="collapse-item" href="action/register.php">রেজিস্টার
+              <a class="collapse-item" href="register.php">রেজিস্টার
               </a>
               <a class="collapse-item" href="action/forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
@@ -250,49 +236,35 @@ while ($row = $result->fetch_assoc()) {
           <button class="rounded-circle border-0" id="sidebarToggle">
           </button>
         </div>
-        
-        
-        
-        
       </ul>
       <!-- End of Sidebar -->
 
-
-
-
-
-
-
-
-      
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-        
-        <h2  class="text-white header-top-bg text-center  pt-1 pb-1">সদস্য ফরম 
-         </h2>
-      
-       
-
-        
-         
-          
-          <h3 class="text-right"></h3>
-          
+        <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য ফরম
+          </h2>
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
             <!-- Sidebar Toggle (Topbar) -->
-           
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars">
               </i>
             </button>
             
+              <!-- button -->
+              <ul class="navbar-nav ml-auto mt-1 mb-2 mt-lg-0">
+                      
 
+                      <a href="running_member.php" class="btn btn-sm  btn-primary ml-2 mb-1">বর্তমান সদস্য
+                      </a>
+                      <a href="add_member.php" class="btn btn-sm btn-success  ml-2 mb-1">সদস্য যোগ করুন
+                      </a>
 <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
-<a href="index.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য</a>
-<a href="reset.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য</a>
+                    </ul>
+
+
 
 
 
@@ -444,58 +416,12 @@ while ($row = $result->fetch_assoc()) {
               
               </div>
               <!-- Nav Item - User Information -->
-             
-              <?php
-
-
-
-
-$sql = "SELECT * FROM `users` where name='$name' and password='$password' LIMIT 1";
-$result = $conn->query($sql);
-if ($result) {
-// output data of each row
-while ($row = $result->fetch_assoc()) {
-
-if($row['image'] == 1){
-
-  $image =  'images/users/' . $row['image'];
-  
-
-
-  ?>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
-                <img class="img-profile rounded-circle" src="<?php if($row['image']){echo $image;} else{echo $blank; } ?>">
-              </a>
-
-
-              
-<?php
-
-}else
-{
-
-  ?>
-  
-    <!-- Nav Item - User Information -->
-    <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
-                <img class="img-profile rounded-circle" src="images/users/blank.jpg">
-              </a>
-
-  <?php
-
-}
-
-}
-}
-
-
-?>
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna
+                  </span>
+                  <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                </a>
                 
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -592,7 +518,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 <!-- ============================================= 222222222 ========================================================= -->   
     
 <?php
- $sql = "SELECT sum(savings) AS `savings` FROM `member_premier_data` where test=$id";
+ $sql = "SELECT sum(savings) AS `savings` FROM `member_premier_data` where current_id=$id";
  
  $result = mysqli_query($conn, $sql);
  $data = mysqli_fetch_array($result);
@@ -600,8 +526,6 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
  $l_total= $row['total_amount'];
  $profit= $row['profit_amount'];
  
-
-
 ?>
 
 
@@ -834,7 +758,6 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
 
 <?php
-
     }
   }
 ?>
@@ -864,20 +787,9 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 <!-- --------------------------------------------------------------------------------------------- -->
 
 
-   <?php
-}else {
-
-   header('location: index.php');
-
-
+<?php
 }
-
 ?>
-
-
-
-
-
 
 
 

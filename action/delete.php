@@ -1,6 +1,6 @@
 <?php 
 
-include('action/sql_config.php');
+include('sql_config.php');
 
 $id = $_GET['id'];
 if ($_GET['image'] == true) {
@@ -32,6 +32,6 @@ if (!unlink($file)) {
 
 
 
- header('location: running_member.php' );
+ header('location: ../running_member.php' );
 
 ?>

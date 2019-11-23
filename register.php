@@ -37,13 +37,34 @@ if (isset($name)) {
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  <style>
+      form{
+        height: 100%;
+      }
+      .sidebar_bg{
+        background: #000d66;
+      }
+      .header-top-bg{
+        background: #004d66;
+      }
+      body{
+        font-family: 'SolaimanLipi', sans-serif !important;
+        padding:0;
+        margin:0;
+        background: #555  ;
+        height:100%;
+      }
+    </style>
 </head>
+
+
+
 
 <body class="bg-gradient-primary">
 
@@ -60,7 +81,7 @@ if (isset($name)) {
           <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                <h1 class="h4 text-gray-900 mb-4">ইউজার একাউন্ট খুলুন</h1>
               </div>
               <form class="user" action="register_insert.php" enctype="multipart/form-data" method="post">
                 <div class="form-group row">
@@ -95,7 +116,7 @@ if (isset($name)) {
                   </div>
 
                   
-                  <button type="submit" value="submit" name="img_upload"  class="btn btn-primary btn-user btn-block">Send message
+                  <button type="submit" value="submit" name="img_upload"  class="btn btn-primary btn-user btn-block">সাবমিট
                         </button>
               
               </form>
@@ -105,10 +126,10 @@ if (isset($name)) {
 
               <hr>
               <div class="text-center">
-                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                <a class="small" href="forgot-password.html">পাসওয়ার্ড ভুলে গেছেন ?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="../index.php">Already have an account? Login!</a>
+                <a class="small" href="../index.php">আগের একাউন্ট আছে ? লগ ইন করুন!</a>
               </div>
             </div>
           </div>

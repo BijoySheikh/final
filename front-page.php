@@ -186,9 +186,9 @@ if (isset($name)) {
               </div>
               <h6 class="collapse-header">অন্যান্য:
               </h6>
-              <a class="collapse-item text-danger" href="all_delete.php">সব সদস্য মুছুন
+              <a class="collapse-item text-danger" href="action/all_delete.php">সব সদস্য মুছুন
               </a>
-              <a class="collapse-item text-danger" href="reset.php">রিসেট
+              <a class="collapse-item text-danger" href="action/all_reset.php">রিসেট
               </a>
             </div>
           </div>
@@ -474,6 +474,46 @@ if($row['image']){
           <!-- Content Row -->
           <div class="row">
 
+          
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-sm font-weight-bold text-warning text-uppercase mb-1">বর্তমান মূলধন</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                    
+                      <?php
+                        $sql = "SELECT sum(savings) AS `total` FROM `comity` ";
+                        
+                        $result = mysqli_query($conn, $sql);
+                        $data = mysqli_fetch_array($result);
+                        $total_amount = $data['total'];
+
+                        if($total_amount > 0){
+                          echo "৳"." ".$total_amount;
+                        }
+                        else{
+                          echo "৳ 0";
+                        }
+                        ?> টাকা
+                      
+
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
@@ -512,13 +552,59 @@ if($row['image']){
 
 
 
+         
+
+          
+
+
+ 
+
+
+  
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-sm  font-weight-bold text-success text-uppercase mb-1">মোট আদায়কৃত কিস্তি</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+
+                        <?php
+                          $sql = "SELECT sum(joma) AS `total` FROM `member_premier_data` ";
+                          
+                          $result = mysqli_query($conn, $sql);
+                          $data = mysqli_fetch_array($result);
+                          $pay_amount = $data['total'];
+
+                          if($pay_amount > 0){
+                            echo "৳"." ".$pay_amount;
+                          }
+                          else{
+                            echo "৳ 0";
+                          }
+                        
+                          ?> টাকা
+
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+                <!-- Earnings (Monthly) Card Example -->
+   <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-sm  font-weight-bold text-success text-uppercase mb-1">সম্ভাব্য লাভ</div>
+                      <div class="text-sm  font-weight-bold text-success text-uppercase mb-1">সম্ভাব্য মোট মুনাফা</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
 
 
@@ -547,81 +633,7 @@ if($row['image']){
               </div>
             </div>
 
-            
-            <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-sm  font-weight-bold text-success text-uppercase mb-1">সম্ভাব্য লাভ</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
 
-
-                        <?php
-                          $sql = "SELECT sum(loan_amount) AS `total` FROM `all_member_form_data` ";
-                          
-                          $result = mysqli_query($conn, $sql);
-                          $data = mysqli_fetch_array($result);
-                          $pay_amount = $data['total'];
-
-                          if($pay_amount > 0){
-                            echo "৳"." ".$pay_amount;
-                          }
-                          else{
-                            echo "৳ 0";
-                          }
-                        
-                          ?> টাকা
-
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-                    
-                      <?php
-                        $sql = "SELECT sum(total_amount) AS `total` FROM `all_member_form_data` ";
-                        
-                        $result = mysqli_query($conn, $sql);
-                        $data = mysqli_fetch_array($result);
-                        $total_amount = $data['total'];
-
-                        if($total_amount > 0){
-                          echo "৳"." ".$total_amount;
-                        }
-                        else{
-                          echo "৳ 0";
-                        }
-                        ?> টাকা
-                      
-
-                      </div>
-                    </div>
-
-
-
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           
@@ -642,11 +654,11 @@ if($row['image']){
     <div class="card-body">
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
-          <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">মোট প্রদান</div>
+          <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">আদায়কৃত লাভ সহ মূলধন</div>
           <div class="h5 mb-0 bangla font-weight-bold text-gray-800">
 
           <?php
-            $sql = "SELECT sum(loan_amount) AS `total` FROM `all_member_form_data` ";
+            $sql = "SELECT sum(total_amount) AS `total` FROM `all_member_form_data` ";
             
             $result = mysqli_query($conn, $sql);
             $data = mysqli_fetch_array($result);
