@@ -105,7 +105,7 @@
             ?>
          <!-- Nav Item - Dashboard -->
          <li class="nav-item active">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="front-page.php">
             <i class="fas fa-home"></i>
             </i>
             <span>মূলপাতা
@@ -230,8 +230,8 @@
       <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
-         <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য ফরম
-         </h2>
+         <h4  class="text-white header-top-bg text-center pt-1 pb-1"><?php echo $row["m_name"]; ?>
+         </h4>
          <!-- Topbar -->
          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
             <!-- Sidebar Toggle (Topbar) -->
