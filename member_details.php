@@ -243,10 +243,11 @@ while ($row = $result->fetch_assoc()) {
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-        <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য ফরম
-          </h2>
+        
           <!-- Topbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
+          <nav class="navbar navbar-expand navbar-light header-top-bg topbar mb-1 static-top shadow">
+          <h  class="text-white  text-center pt-1 pb-1">সদস্যের বিবরণ
+          </h>
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars">
@@ -261,7 +262,6 @@ while ($row = $result->fetch_assoc()) {
                       </a>
                       <a href="add_member.php" class="btn btn-sm btn-success  ml-2 mb-1">সদস্য যোগ করুন
                       </a>
-<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
                     </ul>
 
 
@@ -573,7 +573,12 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 <!-- ============================================= 33333333 ========================================================= -->   
 
 <div class="container">
+<div class="text-right mb-3">
+<button type="button"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
+
+</div>
     <div class="row">
+    
         <div class="col-md-6 col-sm-12">
         <div class="text-center h5 mb-3">
         ঋণ সংক্রান্ত বিবরণী
@@ -721,7 +726,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form  action="premier_data_insert.php" method="post">
+                    <form  action="action/more_info.php" method="post">
                       <div class="form-group">
                         <label for="recipient-name" class="col-form-label">ভোটার আই.ডি নং
                         </label>
@@ -744,7 +749,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                         </button>
-                        <button type="submit" value="submit" name="submit" onclick="myFunction()"  class="btn btn-primary">Send message
+                        <button type="submit" value="submit" name="submit" onclick="myFunction()"  class="btn btn-primary">ঠিক আছে
                         </button>
                       </div>
                     </form>

@@ -64,6 +64,9 @@ if (isset($name)) {
         background: #555  ;
         height:100%;
       }
+      .header-top-bg{
+         background: #004d66;
+         }
     </style>
 
 </head>
@@ -104,6 +107,7 @@ if (isset($name)) {
             <span>মূলপাতা
             </span>
           </a>
+      
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -180,7 +184,7 @@ if (isset($name)) {
               </a>
               <a class="collapse-item" href="register.php">রেজিস্টার
               </a>
-              <a class="collapse-item" href="forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
+              <a class="collapse-item" href="action/forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
               <div class="collapse-divider">
               </div>
@@ -228,24 +232,14 @@ if (isset($name)) {
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light header-top-bg topbar mb-1 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
+          <a href="front-page.php"><h1 class="h3 mb-0 text-white">মূলপাতা</h1></a>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -402,7 +396,7 @@ if($row['image']){
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-white small"><?php echo $row['name']; ?></span>
                 <img class="img-profile rounded-circle" src="<?php if($row['image']){echo $image;} ?>">
               </a>
 
@@ -466,10 +460,15 @@ if($row['image']){
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">মূলপাতা</h1>
-            <a href="add_member.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">সদস্য যোগ করুন</a>
+          <div class="d-sm-flex align-items-center justify-content-end mb-4">
+            
+            
+            <a href="comity.php" class="d-none ml-3 mt-2 d-sm-inline-block btn btn-sm btn-primary shadow-sm">কমিটি</a>
+            <a href="running_member.php" class="d-none ml-3 mt-2 d-sm-inline-block btn btn-sm btn-primary shadow-sm">বর্তমান সদস্য</a>
+            <a href="add_member.php" class="d-none ml-3 mt-2 d-sm-inline-block btn btn-sm btn-primary shadow-sm">সদস্য যোগ করুন</a>
           </div>
+          
+          
 
           <!-- Content Row -->
           <div class="row">
@@ -657,6 +656,8 @@ if($row['image']){
             </div>
 
 
+
+
                                                          <!-- Earnings (Monthly) Card Example -->
    <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
@@ -692,6 +693,42 @@ if($row['image']){
               </div>
             </div>  
               
+              
+<!-- Earnings (Monthly) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-sm  font-weight-bold text-success text-uppercase mb-1">মোট অন্যান্য ফি আদায়</div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+
+          <?php
+            $sql = "SELECT sum(add_cost+others_cost) AS `total` FROM `all_member_form_data` ";
+            
+            $result = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_array($result);
+            $others_cost = $data['total'];
+
+            if($others_cost > 0){
+              echo "৳"." ".$others_cost;
+            }
+            else{
+              echo "৳ 0";
+            }
+          
+            ?> টাকা
+
+          </div>
+        </div>
+        <div class="col-auto">
+          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     
 
@@ -732,7 +769,43 @@ if($row['image']){
             </div>
 
 
+
+<!-- Earnings (Monthly) Card Example -->
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-dark shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">সদস্যের মোট সঞ্চয় </div>
+          <div class="h5 mb-0 bangla font-weight-bold text-gray-800">
+
+          <?php
+            $sql = "SELECT sum(savings) AS `total` FROM `member_premier_data` ";
+            
+            $result = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_array($result);
+            $savings = $data['total'];
+
+            if($savings > 0){
+              echo "৳"." ".$savings;
+            }
+            else{
+              echo "৳ 0";
+            }
           
+            ?> টাকা
+
+          </div>
+        </div>
+        <div class="col-auto">
+          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+     
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
@@ -751,7 +824,8 @@ if($row['image']){
                         $total_amount = $data['total'];
 
                         $balence = $total_amount - $pay_amount;
-                        $total = $premier + $balence;
+                        $total = $premier + $balence + $others_cost;
+                        
                         
                         if($total <= 0){
                           echo "<span class='text-danger'>৳"." ".$total. " </span>";
@@ -779,98 +853,7 @@ if($row['image']){
 
           
 
-
-
-
-    
-
-
-          </div>
-
           
-
-
-
-          
-          <!-- /Content Row -->
-
-
-
-           <!-- Content Row -->
-  <div class="row">
-
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-dark shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">আদায়কৃত লাভ সহ মূলধন</div>
-          <div class="h5 mb-0 bangla font-weight-bold text-gray-800">
-
-          <?php
-            $sql = "SELECT sum(total_amount) AS `total` FROM `all_member_form_data` ";
-            
-            $result = mysqli_query($conn, $sql);
-            $data = mysqli_fetch_array($result);
-            $pay_amount = $data['total'];
-
-            if($pay_amount > 0){
-              echo "৳"." ".$pay_amount;
-            }
-            else{
-              echo "৳ 0";
-            }
-          
-            ?> টাকা
-
-          </div>
-        </div>
-        <div class="col-auto">
-          <i class="fas fa-calendar fa-2x text-gray-300"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-success shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-sm  font-weight-bold text-success text-uppercase mb-1">সম্ভাব্য লাভ</div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">
-
-
-          <?php
-            $sql = "SELECT sum(loan_amount) AS `total` FROM `all_member_form_data` ";
-            
-            $result = mysqli_query($conn, $sql);
-            $data = mysqli_fetch_array($result);
-            $pay_amount = $data['total'];
-
-            if($pay_amount > 0){
-              echo "৳"." ".$pay_amount;
-            }
-            else{
-              echo "৳ 0";
-            }
-          
-            ?> টাকা
-
-          </div>
-        </div>
-        <div class="col-auto">
-          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -904,6 +887,32 @@ if($row['image']){
     </div>
   </div>
 </div>
+
+
+
+
+    
+
+
+          </div>
+
+          
+
+
+
+          
+          <!-- /Content Row -->
+
+
+
+           <!-- Content Row -->
+  <div class="row">
+
+
+
+
+
+
 
 <!-- Pending Requests Card Example -->
 <div class="col-xl-3 col-md-6 mb-4">

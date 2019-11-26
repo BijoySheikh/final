@@ -223,30 +223,35 @@ if (isset($name)) {
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-        <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য ফরম
-          </h2>
+       
           <!-- Topbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
+          <nav class="navbar navbar-expand navbar-light header-top-bg topbar mb-1 static-top shadow">
+         
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars">
               </i>
+              
             </button>
-            
-              <!-- button -->
-              <ul class="navbar-nav ml-auto mt-1 mb-2 mt-lg-0">
-                      <a href="running_member.php" class="btn btn-sm btn-info ml-2 mb-1">বর্তমান সদস্য
-                      </a>
-                      <a href="running_member.php" class="btn btn-sm  btn-primary ml-2 mb-1">বর্তমান সদস্য
-                      </a>
-                      <a href="add_member.php" class="btn btn-sm btn-success  ml-2 mb-1">সদস্য যোগ করুন
-                      </a>
-                    </ul>
-
+            <h4  class="text-white text-center">সদস্য ফরম
+          </h4>
                   
+                 
+                
+            
+                    <!-- button -->
+ 
+                   
+                      <a href="running_member.php" class="btn btn-sm  text-right btn-primary ml-2 mb-1">বর্তমান সদস্য
+                      </a>
+                      <a href="add_member.php" class="btn btn-sm text-right btn-success  ml-2 mb-1">সদস্য যোগ করুন
+                      </a>
+
+         
             
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
+            
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
               <li class="nav-item dropdown no-arrow d-sm-none">
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -268,6 +273,9 @@ if (isset($name)) {
                   </form>
                 </div>
               </li>
+              
+        
+
               <!-- Nav Item - Alerts -->
               <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -277,6 +285,8 @@ if (isset($name)) {
                   <span class="badge badge-danger badge-counter">3+
                   </span>
                 </a>
+
+                
                 <!-- Dropdown - Alerts -->
                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                   <h6 class="dropdown-header">
@@ -326,6 +336,7 @@ if (isset($name)) {
                   </a>
                 </div>
               </li>
+              
               <!-- Nav Item - Messages -->
               <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -396,6 +407,7 @@ if (isset($name)) {
                   </a>
                 </div>
               </li>
+              
               <div class="topbar-divider d-none d-sm-block">
               </div>
 
@@ -423,7 +435,7 @@ if($row['image']){
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-white"><?php echo $row['name']; ?></span>
                 <img class="img-profile rounded-circle" src="<?php if($row['image']){echo $image;} else{echo $blank; } ?>">
               </a>
 
@@ -477,6 +489,7 @@ if($row['image']){
                 </div>
               </li>
             </ul>
+            
           </nav>
           <!-- End of Topbar -->
 

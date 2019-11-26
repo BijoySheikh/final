@@ -226,14 +226,19 @@
          </div>
       </ul>
       <!-- End of Sidebar -->
+
+      
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
       <!-- Main Content -->
       <div id="content">
-         <h4  class="text-white header-top-bg text-center pt-1 pb-1"><?php echo $row["m_name"]; ?>
-         </h4>
+        
          <!-- Topbar -->
-         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
+         <nav class="navbar navbar-expand navbar-light header-top-bg topbar mb-1 static-top shadow">
+
+         <h4 class="text-white text-center ml-3"><?php echo $row["m_name"]; ?></h4>
+         
+
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars">
@@ -443,18 +448,18 @@
                </span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                     <a href="running_member.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য
-                     </a>
-                     <a href="running_member.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য
-                     </a>
-                     <a href="add_member.php" class="btn btn-sm btn-info ml-2">সদস্য যোগ করুন
-                     </a>
-                     <a href="add_member.php" class="btn btn-sm btn-info ml-2">সদস্য যোগ করুন
-                     </a>
-                     <a href="member_details.php?id=<?php echo $id;?>" class="btn btn-sm btn-danger ml-2">বিস্তারিত  দেখুন
-                     </a>
-                  </ul>
+                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <a href="running_member.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য
+                        </a>
+                        <a href="running_member.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য
+                        </a>
+                        <a href="add_member.php" class="btn btn-sm btn-success ml-2">পরিশোধ
+                        </a>
+                        <a href="add_member.php" class="btn btn-sm btn-info ml-2">সদস্য যোগ করুন
+                        </a>
+                        <a href="member_details.php?id=<?php echo $id;?>" class="btn btn-sm btn-danger ml-2">বিস্তারিত  দেখুন
+                        </a>
+                     </ul>
                </div>
             </nav>
          </div>
